@@ -1,3 +1,5 @@
+<!-- To run... npm run develop in one tab...sanity start in another tab...sanity graphql deploy to deploy the data-->
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.com">

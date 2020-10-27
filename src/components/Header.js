@@ -1,16 +1,20 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 export default function Header({ scrollPosition }) {
   return (
     <Container scrollPosition={scrollPosition}>
-      <h1>AYTCH</h1>
+      <Link to="/">
+        <h1>AYTCH</h1>
+      </Link>
+
       <Menu>
         <MenuItem href="#music">Music</MenuItem>
         <MenuItem href="#music">Videos</MenuItem>
         <MenuItem href="#music">Production</MenuItem>
-        <MenuItem href="#music">Beats</MenuItem>
-        <MenuItem href="#music">Contact</MenuItem>
+        <MenuItemLink to="/beats">Beats</MenuItemLink>
+        <MenuItemLink to="/contact">Contact</MenuItemLink>
       </Menu>
     </Container>
   )
@@ -37,6 +41,17 @@ const Menu = styled.div`
 `
 
 const MenuItem = styled.a`
+  width: 80px;
+  margin: 4px 20px;
+  width: 80px;
+  text-align: center;
+  border-radius: 5px;
+  padding: 6px 0px;
+  color: black;
+  text-decoration: none;
+`
+
+const MenuItemLink = styled(props => <Link {...props} />)`
   width: 80px;
   margin: 4px 20px;
   width: 80px;
