@@ -3,6 +3,9 @@ import styled from 'styled-components'
 
 import Header from 'components/Header'
 
+import 'layouts/Layout.css'
+import { colors } from 'BaseTheme'
+
 export default function Layout({ alignTop = false, children }) {
   const [scrollPosition, setScrollPosition] = useState(0)
 
@@ -23,12 +26,19 @@ export default function Layout({ alignTop = false, children }) {
     <div>
       <Header scrollPosition={scrollPosition} />
 
-      <Body alignTop={alignTop}>{children}</Body>
+      <Body>
+        <Content alignTop={alignTop}>{children}</Content>
+      </Body>
     </div>
   )
 }
 
 const Body = styled.div`
+  background-color: ${colors.primary};
+`
+
+const Content = styled.div`
   margin-top: ${props => (props.alignTop ? '0px' : '80px')};
-  background-color: teal;
+  max-width: 1366px;
+  margin: auto;
 `

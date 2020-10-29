@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
+import { colors } from 'BaseTheme'
+
 export default function Header({ scrollPosition }) {
   return (
     <Container scrollPosition={scrollPosition}>
@@ -31,7 +33,7 @@ const Container = styled.div`
   right: 0;
   top: 0;
   background-color: ${props =>
-    `rgba(255, 255, 255, ${props.scrollPosition / 500})`};
+    colors.primaryDarkAlpha.replace('x', props.scrollPosition / 500)};
 `
 
 const Menu = styled.div`
@@ -47,7 +49,7 @@ const MenuItem = styled.a`
   text-align: center;
   border-radius: 5px;
   padding: 6px 0px;
-  color: black;
+  color: ${colors.primaryLight};
   text-decoration: none;
 `
 
@@ -58,6 +60,6 @@ const MenuItemLink = styled(props => <Link {...props} />)`
   text-align: center;
   border-radius: 5px;
   padding: 6px 0px;
-  color: black;
+  color: ${colors.primaryLight};
   text-decoration: none;
 `
