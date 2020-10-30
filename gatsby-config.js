@@ -5,10 +5,14 @@
  */
 
 require('dotenv').config()
-const path = require(`path`)
 
 module.exports = {
   /* Your site config here */
+  siteMetadata: {
+    title: `Aytch Official`,
+    description: `Official website of Aytch. Check out all new music, videos, beats, and production.`,
+    author: `Pretty Good Media`,
+  },
   plugins: [
     `gatsby-plugin-styled-components`,
     'gatsby-plugin-postcss',
@@ -40,6 +44,13 @@ module.exports = {
         token: process.env.SANITY_TOKEN,
         watchMode: true,
         overlayDrafts: true,
+      },
+    },
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./src/data/`,
       },
     },
   ],

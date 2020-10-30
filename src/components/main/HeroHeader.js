@@ -26,11 +26,11 @@ export default function HeroHeader({}) {
       <ContentContainer center>
         <HeaderTextContainer>
           <HeaderText>Singer</HeaderText>
-          <HeaderText>Singer</HeaderText>
-          <HeaderText>Singer</HeaderText>
+          <HeaderText>Songwriter</HeaderText>
+          <HeaderText>Producer</HeaderText>
         </HeaderTextContainer>
 
-        <Button>Looking for Beats?</Button>
+        <Button text="Looking for Beats?" />
 
         <SocialMediaIcons color={colors.primaryLight} size={32} />
       </ContentContainer>

@@ -3,21 +3,35 @@ import styled from 'styled-components'
 
 import { colors } from 'BaseTheme'
 
-export default function Button({ children, onClick }) {
-  return <StyledButton onClick={onClick}>{children}</StyledButton>
+export default function Button({ children, onClick, style, text }) {
+  return (
+    <StyledButton onClick={onClick} style={style}>
+      <ButtonText>{text}</ButtonText>
+      {children}
+    </StyledButton>
+  )
 }
 
 const StyledButton = styled.button`
   border: 3px solid ${colors.primaryLight};
   background: none;
-  color: ${colors.primaryLight};
-  font-size: 18px;
   padding: 10px 40px;
   transition: all 100ms ease;
+  display: block;
 
   :hover {
     cursor: pointer;
     background: ${colors.primaryLight};
-    color: ${colors.primaryDark};
+
+    p {
+      color: ${colors.primaryDark};
+    }
   }
+`
+
+const ButtonText = styled.p`
+  color: ${colors.primaryLight};
+  font-size: 18px;
+  transition: all 100ms ease;
+  margin: 0px;
 `

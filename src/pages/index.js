@@ -3,11 +3,13 @@ import React from 'react'
 import Layout from 'layouts/Layout'
 
 import HeroHeader from 'components/main/HeroHeader'
+import Music from 'components/main/Music'
 
 export default function Home() {
   return (
     <Layout alignTop>
       <HeroHeader />
+      <Music />
 
       <p style={{ height: '100px' }}>1</p>
       <p style={{ height: '100px' }}>2</p>
