@@ -9,12 +9,11 @@ export default function MusicImageGrid({}) {
         nodes {
           title
           imageSrc
+          link
         }
       }
     }
   `)
-
-  console.log('Music', data.allMusicJson.nodes)
 
   return (
     <Grid>

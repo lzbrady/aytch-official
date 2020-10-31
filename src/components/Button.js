@@ -32,6 +32,7 @@ const StyledButton = styled.button`
 const ButtonText = styled.p`
   color: ${colors.primaryLight};
   font-size: 18px;
-  transition: all 100ms ease;
+  transition: all 200ms linear;
   margin: 0px;
+  font-size: 24px;
 `
