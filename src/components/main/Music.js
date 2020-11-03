@@ -1,13 +1,26 @@
 import React from 'react'
 import styled from 'styled-components'
+import { graphql, useStaticQuery } from 'gatsby'
 
 import Section from 'components/Section'
 import Button from 'components/Button'
 import MusicImageGrid from 'components/main/MusicImageGrid'
 
 export default function Music({}) {
+  const data = useStaticQuery(graphql`
+    query MusicBackgroundQuery {
+      fileName: file(relativePath: { eq: "background-beats.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 800) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
+
   return (
-    <Section title="Music">
+    <Section title="Music" imageData={data.fileName.childImageSharp.fluid}>
       <Container>
         <MusicContainer>
           <MusicImageGrid />
@@ -49,7 +62,7 @@ const Container = styled.div`
 `
 
 const MusicContainer = styled.div`
-  flex: 4;
+  flex: 1;
   align-items: center;
   min-width: 250px;
   padding: 0px 20px;
@@ -58,6 +71,6 @@ const MusicContainer = styled.div`
 const SpotifyContainer = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 3;
+  flex: 1;
   align-items: center;
 `

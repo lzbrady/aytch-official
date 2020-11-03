@@ -2,33 +2,37 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import Header from 'components/Header'
+import Footer from 'components/Footer'
 
 import 'layouts/Layout.css'
 import { colors } from 'BaseTheme'
 
 export default function Layout({ alignTop = false, children }) {
-  const [scrollPosition, setScrollPosition] = useState(0)
+  // const [scrollPosition, setScrollPosition] = useState(0)
 
-  useEffect(() => {
-    const scrollEvent = () => {
-      requestAnimationFrame(() => {
-        setScrollPosition(window.pageYOffset)
-      })
-    }
+  // useEffect(() => {
+  //   const scrollEvent = () => {
+  //     requestAnimationFrame(() => {
+  //       setScrollPosition(window.pageYOffset)
+  //     })
+  //   }
 
-    document.addEventListener('scroll', scrollEvent)
-    return () => {
-      document.removeEventListener('scroll', scrollEvent)
-    }
-  }, [])
+  //   document.addEventListener('scroll', scrollEvent)
+  //   return () => {
+  //     document.removeEventListener('scroll', scrollEvent)
+  //   }
+  // }, [])
 
   return (
     <div>
-      <Header scrollPosition={scrollPosition} />
+      <Header />
+      {/* <Header scrollPosition={scrollPosition} /> */}
 
       <Body>
         <Content alignTop={alignTop}>{children}</Content>
       </Body>
+
+      <Footer />
     </div>
   )
 }

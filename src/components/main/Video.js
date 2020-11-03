@@ -11,12 +11,20 @@ export default function Video({}) {
   // window.innerWidth
   // Load initial video
   const data = useStaticQuery(graphql`
-    query InitialVideoQuery {
+    query VideoQuery {
       videoJson {
         title
         imageSrc
         link
         isSquare
+      }
+
+      fileName: file(relativePath: { eq: "background-beats.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 800) {
+            ...GatsbyImageSharpFluid
+          }
+        }
       }
     }
   `)
@@ -24,7 +32,7 @@ export default function Video({}) {
   const [activeVideo, setActiveVideo] = useState(data?.videoJson)
 
   return (
-    <Section title="Video">
+    <Section title="Video" imageData={data.fileName.childImageSharp.fluid}>
       <Container>
         <VideoContainer center={!activeVideo?.isSquare}>
           <h1>{activeVideo?.title}</h1>
@@ -57,7 +65,8 @@ const Container = styled.div`
 
 const PlayerContainer = styled.div`
   width: 100%;
-  height: 640px;
+  max-width: 960px;
+  height: 605px;
   display: flex;
   justify-content: center;
   align-items: ${props => (props.center ? 'center' : 'flex-start')};
@@ -65,7 +74,7 @@ const PlayerContainer = styled.div`
   background-color: black;
 
   @media (max-width: 800px) {
-    height: 320px!important;
+    height: 320px !important;
   }
 `
 const VideoContainer = styled.div`

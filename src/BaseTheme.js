@@ -5,6 +5,7 @@ export const colors = {
   accent: '#EF233C',
   accentDark: '#D90429',
 
+  primaryAlpha: 'rgba(237, 242, 244, x)',
   primaryDarkAlpha: 'rgba(43, 45, 66, x)',
 }
 

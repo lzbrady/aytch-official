@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
 
@@ -7,7 +7,7 @@ export default function VideoThumbnails({
   onThumbnailSelected,
 }) {
   const data = useStaticQuery(graphql`
-    query VideoQuery {
+    query VideoThumbnailsQuery {
       allVideoJson {
         nodes {
           title
@@ -19,34 +19,69 @@ export default function VideoThumbnails({
     }
   `)
 
-  console.log('Videos', data.allVideoJson.nodes)
+  const containerRef = useRef()
 
   return (
-    <Container>
-      {data?.allVideoJson?.nodes?.map(thumbnail => {
-        return (
-          <Thumbnail
-            key={thumbnail.title}
-            onClick={() => onThumbnailSelected(thumbnail)}
-          >
-            <Card active={activeVideoTitle === thumbnail.title}>
-              <StyledImage src={thumbnail.imageSrc} />
-            </Card>
-            <Title>{thumbnail.title}</Title>
-          </Thumbnail>
-        )
-      })}
-    </Container>
+    <Wrapper>
+      <ArrowButton
+        onClick={() => containerRef.current.scrollBy(-260, 0)}
+        align="left"
+      >
+        &lt;
+      </ArrowButton>
+
+      <Container ref={containerRef}>
+        {data?.allVideoJson?.nodes?.map(thumbnail => {
+          return (
+            <Thumbnail
+              key={thumbnail.title}
+              onClick={() => onThumbnailSelected(thumbnail)}
+            >
+              <Card active={activeVideoTitle === thumbnail.title}>
+                <StyledImage src={thumbnail.imageSrc} />
+              </Card>
+              <Title>{thumbnail.title}</Title>
+            </Thumbnail>
+          )
+        })}
+      </Container>
+
+      <ArrowButton
+        onClick={() => containerRef.current.scrollBy(260, 0)}
+        align="right"
+      >
+        &gt;
+      </ArrowButton>
+    </Wrapper>
   )
 }
+
+const ArrowButton = styled.button`
+  position: absolute;
+  top: 50px;
+  height: 50px;
+  width: 50px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: none;
+  border-radius: 8px;
+  font-size: 32px;
+  z-index: 100;
+  ${props => props.align + ': 0'};
+
+  :hover {
+    background-color: rgb(255, 255, 255) !important;
+  }
+`
 
 const Card = styled.div`
   width: 240px;
   height: 150px;
   background-color: black;
   border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
-  border: ${props => (props.active ? '3px solid white' : 'none')}
+  box-shadow: 0px 4px 8px
+    ${props =>
+      props.active ? 'rgba(255, 255, 255, 0.4)' : 'rgba(0, 0, 0, 0.4)'};
+  border: ${props => (props.active ? '3px solid white' : 'none')};
   box-sizing: border-box;
 
   :hover {
@@ -62,7 +97,6 @@ const Container = styled.div`
   width: 100%;
   overflow: scroll;
   padding-bottom: 20px;
-  margin: 36px 20px;
 `
 
 const StyledImage = styled.img`
@@ -77,4 +111,10 @@ const Thumbnail = styled.div`
   text-align: center;
   margin-right: 20px;
   flex-shrink: 0;
+`
+
+const Wrapper = styled.div`
+  position: relative;
+  width: calc(100% - 80px);
+  margin: 36px 40px;
 `

@@ -6,7 +6,7 @@ import { colors } from 'BaseTheme'
 
 export default function Header({ scrollPosition }) {
   return (
-    <Container scrollPosition={scrollPosition > 500 ? 500 : scrollPosition}>
+    <Container>
       <Link to="/">
         <h1>AYTCH</h1>
       </Link>
@@ -33,8 +33,9 @@ const Container = styled.div`
   right: 0;
   top: 0;
   z-index: 9999;
-  background-color: ${props =>
-    colors.primaryDarkAlpha.replace('x', props.scrollPosition / 500)};
+  background-color: ${colors.primaryDark};
+  ${'' /* background-color: ${props =>
+    colors.primaryDarkAlpha.replace('x', props.scrollPosition / 500)}; */}
 `
 
 const Menu = styled.div`
@@ -46,7 +47,6 @@ const Menu = styled.div`
 const MenuItem = styled.a`
   width: 80px;
   margin: 4px 20px;
-  width: 80px;
   text-align: center;
   border-radius: 5px;
   padding: 6px 0px;
