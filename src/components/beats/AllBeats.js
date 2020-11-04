@@ -70,7 +70,7 @@ const BuyButton = styled.button`
 `
 
 const BuyButtonText = styled.p`
-  font-size: 24px;
+  font-size: 18px;
   margin: 0px;
   color: white;
 `
@@ -101,7 +101,7 @@ const SongInfo = styled.div`
 
 const SongNumber = styled.p`
   margin: 0px;
-  font-size: 36px;
+  font-size: 28px;
   width: 50px;
   margin-right: 20px;
   text-align: center;
@@ -109,8 +109,8 @@ const SongNumber = styled.p`
 `
 
 const StyledImage = styled.img`
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   border-radius: 13px;
 `
 
@@ -118,10 +118,12 @@ const Text = styled.h3`
   font-size: 18px;
   margin: 0px;
   color: ${colors.primary};
+  font-weight: normal;
 `
 
 const Title = styled.h1`
-  font-size: 36px;
+  font-size: 28px;
   margin: 0px;
   color: ${colors.primaryDark};
+  font-weight: normal;
 `

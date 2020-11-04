@@ -7,7 +7,11 @@ import Footer from 'components/Footer'
 import 'layouts/Layout.css'
 import { colors } from 'BaseTheme'
 
-export default function Layout({ alignTop = false, children }) {
+export default function Layout({
+  alignTop = false,
+  children,
+  ignoreMaxWidth = false,
+}) {
   // const [scrollPosition, setScrollPosition] = useState(0)
 
   // useEffect(() => {
@@ -29,7 +33,9 @@ export default function Layout({ alignTop = false, children }) {
       {/* <Header scrollPosition={scrollPosition} /> */}
 
       <Body>
-        <Content alignTop={alignTop}>{children}</Content>
+        <Content ignoreMaxWidth={ignoreMaxWidth} alignTop={alignTop}>
+          {children}
+        </Content>
       </Body>
 
       <Footer />
@@ -43,5 +49,5 @@ const Body = styled.div`
 
 const Content = styled.div`
   margin: ${props => (props.alignTop ? '0px' : '80px') + ' auto 0px'};
-  max-width: 1366px;
+  max-width: ${props => (props.ignoreMaxWidth ? 'none' : '1366px')};
 `
