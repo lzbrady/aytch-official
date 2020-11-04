@@ -3,6 +3,8 @@ import { Link, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 
+import SocialMediaIcons from 'components/SocialMediaIcons'
+
 import { colors } from 'BaseTheme'
 
 export default function Footer({}) {
@@ -10,7 +12,7 @@ export default function Footer({}) {
     query FooterQuery {
       aytchLogo: file(relativePath: { eq: "aytch-logo.png" }) {
         childImageSharp {
-          fixed(width: 250, height: 250) {
+          fixed(width: 200, height: 200) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -18,7 +20,7 @@ export default function Footer({}) {
 
       hiTunesLogo: file(relativePath: { eq: "hi-tunes-logo.png" }) {
         childImageSharp {
-          fixed(width: 250, height: 250) {
+          fixed(width: 200, height: 200) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -36,6 +38,7 @@ export default function Footer({}) {
 
       <ContentContainer>
         <Title>Aytch</Title>
+
         <Pages>
           <FooterLink to="/#music">Music</FooterLink>
           <FooterLink to="/#videos">Videos</FooterLink>
@@ -44,9 +47,9 @@ export default function Footer({}) {
           <FooterLink to="/contact">Contact</FooterLink>
         </Pages>
 
-        <Icons></Icons>
+        <SocialMediaIcons color={colors.primary} />
 
-        <AuthorLink></AuthorLink>
+        <AuthorLink>Website created with by Pretty Good Media</AuthorLink>
       </ContentContainer>
 
       <LogoContainer>
@@ -58,7 +61,9 @@ export default function Footer({}) {
   )
 }
 
-const AuthorLink = styled.a``
+const AuthorLink = styled.a`
+  color: ${colors.primary};
+`
 
 const Container = styled.div`
   display: flex;
@@ -68,20 +73,26 @@ const Container = styled.div`
   box-sizing: border-box;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: flex-start;
 `
 
 const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   flex: 1;
 `
 
-const FooterLink = styled.div``
+const FooterLink = styled.div`
+  color: ${colors.primaryLight};
+`
 
 const Icons = styled.div``
 
 const ImageContainer = styled.div`
-  width: 250px;
-  height: 250px;
-  border-radius: 250px;
+  width: 200px;
+  height: 200px;
+  border-radius: 200px;
   overflow: hidden;
 `
 
@@ -93,6 +104,16 @@ const LogoContainer = styled.div`
   align-items: center;
 `
 
-const Pages = styled.div``
+const Pages = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex: 1;
+  align-self: stretch;
+  margin-bottom: 80px;
+`
 
-const Title = styled.h1``
+const Title = styled.h1`
+  color: ${colors.primaryLight};
+margin-bottom: 40px;
+`

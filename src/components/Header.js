@@ -35,7 +35,7 @@ const Container = styled.div`
   z-index: 9999;
   background-color: ${colors.primaryDark};
   ${'' /* background-color: ${props =>
-    colors.primaryDarkAlpha.replace('x', props.scrollPosition / 500)}; */}
+    colors.alpha.primaryDark.replace('x', props.scrollPosition / 500)}; */}
 `
 
 const Menu = styled.div`

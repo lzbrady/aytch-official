@@ -42,7 +42,6 @@ const Body = styled.div`
 `
 
 const Content = styled.div`
-  margin-top: ${props => (props.alignTop ? '0px' : '80px')};
+  margin: ${props => (props.alignTop ? '0px' : '80px') + ' auto 0px'};
   max-width: 1366px;
-  margin: auto;
 `

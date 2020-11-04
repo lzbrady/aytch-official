@@ -46,7 +46,7 @@ const StyledBackgroundImage = styled(props => <BackgroundImage {...props} />)`
 `
 
 const SectionLabel = styled.div`
-  background-color: ${colors.primaryAlpha.replace('x', '0.9')};
+  background-color: ${colors.alpha.primary.replace('x', '0.9')};
   height: 160px;
   display: flex;
   align-items: center;
