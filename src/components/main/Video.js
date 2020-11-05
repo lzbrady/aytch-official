@@ -6,6 +6,8 @@ import styled from 'styled-components'
 import Section from 'components/Section'
 import VideoThumbnails from 'components/main/VideoThumbnails'
 
+import { MEDIUM_SCREEN_SIZE } from 'constants'
+
 export default function Video({}) {
   // const [videoSizeDivider, setVideoSizeDivider] = useState(1);
   // window.innerWidth
@@ -77,7 +79,7 @@ const PlayerContainer = styled.div`
   margin: auto;
   background-color: black;
 
-  @media (max-width: 800px) {
+  @media (max-width: ${MEDIUM_SCREEN_SIZE}) {
     height: 320px !important;
   }
 `

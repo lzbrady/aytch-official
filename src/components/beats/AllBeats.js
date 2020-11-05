@@ -84,6 +84,7 @@ const StyledPlayButton = styled(props => <PlayButton {...props} />)`
 const Beat = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   padding: 25px 20px;
   align-items: center;
   border-radius: 13px;
@@ -106,6 +107,9 @@ const BuyButton = styled.button`
   background-color: ${colors.accent};
   padding: 10px 30px;
   border: none;
+  margin: 10px auto;
+  flex: 1;
+  max-width: 250px;
 
   :hover {
     cursor: pointer;
@@ -122,9 +126,10 @@ const BuyButtonText = styled.p`
 const Container = styled.div`
   background-color: white;
   border-radius: 13px;
-  ${shadows.primary};
+  width: 90%;
   max-width: 900px;
   margin: auto;
+  ${shadows.primary};
 `
 
 const Divider = styled.hr`

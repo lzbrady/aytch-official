@@ -48,7 +48,7 @@ const Background = styled.div`
 `
 
 const Container = styled.div`
-  padding: 100px 0px;
+  padding: 100px 10px;
   position: relative;
 `
 

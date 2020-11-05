@@ -86,10 +86,11 @@ const FormContent = styled.div`
 `
 
 const InputGroup = styled.div`
-  display: grid;
-  grid-auto-flow: column;
+  display: flex;
+  flex-direction: row;
   grid-gap: 20px;
   margin-top: 20px;
+  flex-wrap: wrap;
 `
 
 const Title = styled.h1`

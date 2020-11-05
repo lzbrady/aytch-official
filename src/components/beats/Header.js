@@ -6,6 +6,7 @@ import BackgroundImage from 'gatsby-background-image'
 import HighlightButton from 'components/beats/HighlightButton'
 
 import { colors } from 'BaseTheme'
+import { SMALL_SCREEN_SIZE, MEDIUM_SCREEN_SIZE } from 'constants'
 
 export default function Header({}) {
   const data = useStaticQuery(graphql`
@@ -50,10 +51,8 @@ const Container = styled.div`
 
 const StyledBackgroundImage = styled(props => <BackgroundImage {...props} />)`
   height: 60vh;
-  min-height: 600px;
   width: 100%;
   z-index: 5;
-  min-height: 600px;
   position: absolute !important;
   top: 80px;
   left: 0;
@@ -64,7 +63,7 @@ const StyledBackgroundImage = styled(props => <BackgroundImage {...props} />)`
     background-attachment: fixed;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: ${SMALL_SCREEN_SIZE}) {
     ::before,
     ::after {
       background-attachment: scroll;
@@ -76,12 +75,20 @@ const Subtitle = styled.h2`
   color: ${colors.primaryLight};
   font-size: 144px;
   margin: 0;
+
+  @media (max-width: ${MEDIUM_SCREEN_SIZE}) {
+    font-size: 48px;
+  }
 `
 
 const Title = styled.h1`
   color: ${colors.primaryLight};
   font-size: 288px;
   margin: 0;
+
+  @media (max-width: ${MEDIUM_SCREEN_SIZE}) {
+    font-size: 96px;
+  }
 `
 
 const TitleContainer = styled.div`

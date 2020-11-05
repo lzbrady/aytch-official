@@ -39,6 +39,7 @@ const StyledLabel = styled.label`
   flex-direction: column;
   font-size: 18px;
   color: ${colors.primaryDark};
+  flex: 1;
 `
 
 const StyledInput = styled(props => <input {...props} />)`

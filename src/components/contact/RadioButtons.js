@@ -24,17 +24,19 @@ export default function RadioButtons({ buttons, label, name }) {
 
 const ButtonsContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
+  flex-wrap: wrap;
 `
 
 const Label = styled.p`
   font-size: 18px;
   color: ${colors.primaryDark};
+  margin: 0px 0px 10px;
 `
 
 const RadioButton = styled.div`
-  margin: 0px 20px;
+  margin: 5px 0px;
   display: flex;
   flex-direction: row;
   align-items: center;

@@ -2,6 +2,8 @@ import React from 'react'
 import { useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
 
+import { colors } from 'BaseTheme'
+
 export default function MusicImageGrid({}) {
   const data = useStaticQuery(graphql`
     query MusicQuery {
@@ -48,7 +50,7 @@ const GridElement = styled.div`
 
     h3 {
       display: inherit;
-      background-color: rgba(255, 255, 255, 0.5);
+      background-color: rgba(255, 255, 255, 0.8);
     }
   }
 `
@@ -69,4 +71,5 @@ const Title = styled.h3`
   margin: 0;
   padding: 20px 10px;
   display: none;
+  color: ${colors.accentDark};
 `

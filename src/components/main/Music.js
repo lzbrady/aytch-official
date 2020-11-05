@@ -30,7 +30,7 @@ export default function Music({}) {
           <MusicImageGrid />
           <Button
             text="View More"
-            style={{ margin: '40px 80px 0px', width: 'calc(100% - 160px)' }}
+            style={{ margin: '40px auto 0px', width: '250px' }}
           />
         </MusicContainer>
 
@@ -60,16 +60,18 @@ export default function Music({}) {
 }
 
 const Container = styled.div`
-  padding: 180px 80px 0px;
+  padding: 10% 5%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 `
 
 const MusicContainer = styled.div`
   flex: 1;
   align-items: center;
-  min-width: 250px;
+  min-width: 300px;
   padding: 0px 20px;
+  margin-bottom: 40px;
 `
 
 const SpotifyContainer = styled.div`

@@ -20,7 +20,8 @@ const StyledButton = styled.button`
   align-items: center;
   justify-content: space-between;
   padding: 40px;
-  width: 500px;
+  width: 90%;
+  max-width: 500px;
   height: 150px;
   border-radius: 126px;
   margin: auto;

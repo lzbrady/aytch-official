@@ -7,6 +7,7 @@ import Button from 'components/Button'
 import SocialMediaIcons from 'components/SocialMediaIcons'
 
 import { colors } from 'BaseTheme'
+import { SMALL_SCREEN_SIZE } from 'constants'
 
 export default function HeroHeader({}) {
   const data = useStaticQuery(graphql`
@@ -23,7 +24,7 @@ export default function HeroHeader({}) {
 
   return (
     <Container>
-      <ContentContainer center>
+      <ContentContainer>
         <HeaderTextContainer>
           <HeaderText>Singer</HeaderText>
           <HeaderText>Songwriter</HeaderText>
@@ -35,27 +36,32 @@ export default function HeroHeader({}) {
         <SocialMediaIcons color={colors.primaryLight} size={32} />
       </ContentContainer>
 
-      <ContentContainer>
+      <ImageContainer>
         <Img
           className="profile"
           fluid={data.fileName.childImageSharp.fluid}
           alt="Aytch"
         />
-      </ContentContainer>
+      </ImageContainer>
     </Container>
   )
 }
 
 const Container = styled.div`
   padding-top: 180px;
-  display: grid;
-  grid-template-columns: 3fr 4fr;
+  display: flex;
 `
 
 const ContentContainer = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: ${props => (props.center ? 'center' : 'inherit')};
+  align-items: center;
+
+  @media screen and (max-width: ${SMALL_SCREEN_SIZE}) {
+    position: relative;
+    z-index: 10;
+  }
 `
 
 const HeaderText = styled.h1`
@@ -70,4 +76,20 @@ const HeaderTextContainer = styled.div`
   flex-direction: column;
   width: 240px;
   margin-bottom: 120px;
+`
+
+const ImageContainer = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: ${SMALL_SCREEN_SIZE}) {
+    position: absolute;
+    top: 160px;
+    right: -250px;
+    width: 500px;
+    height: auto;
+    z-index: 1;
+    opacity: 0.5;
+  }
 `

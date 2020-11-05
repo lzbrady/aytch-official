@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import BackgroundImage from 'gatsby-background-image'
 
 import { colors } from 'BaseTheme'
+import { SMALL_SCREEN_SIZE } from 'constants'
 
 export default function Section({ id, imageData, title, children }) {
   return (
@@ -37,7 +38,7 @@ const StyledBackgroundImage = styled(props => <BackgroundImage {...props} />)`
     background-attachment: fixed;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: ${SMALL_SCREEN_SIZE}) {
     ::before,
     ::after {
       background-attachment: scroll;
@@ -64,4 +65,8 @@ const Label = styled.h1`
   font-weight: normal;
   color: ${colors.primaryDark};
   flex: 1;
+
+  @media screen and (max-width: ${SMALL_SCREEN_SIZE}) {
+    font-size: 60px;
+  }
 `
