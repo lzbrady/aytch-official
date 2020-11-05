@@ -20,7 +20,11 @@ export default function Music({}) {
   `)
 
   return (
-    <Section title="Music" imageData={data.fileName.childImageSharp.fluid}>
+    <Section
+      title="Music"
+      imageData={data.fileName.childImageSharp.fluid}
+      id="music"
+    >
       <Container>
         <MusicContainer>
           <MusicImageGrid />

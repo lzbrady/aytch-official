@@ -23,7 +23,7 @@ export default function Contact() {
   `)
 
   return (
-    <Layout ignoreMaxWidth>
+    <Layout ignoreContentBounds>
       <Container>
         <ContactForm />
 

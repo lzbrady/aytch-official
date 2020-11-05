@@ -32,7 +32,11 @@ export default function Video({}) {
   const [activeVideo, setActiveVideo] = useState(data?.videoJson)
 
   return (
-    <Section title="Video" imageData={data.fileName.childImageSharp.fluid}>
+    <Section
+      id="video"
+      title="Video"
+      imageData={data.fileName.childImageSharp.fluid}
+    >
       <Container>
         <VideoContainer center={!activeVideo?.isSquare}>
           <h1>{activeVideo?.title}</h1>

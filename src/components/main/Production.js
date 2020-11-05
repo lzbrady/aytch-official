@@ -5,7 +5,7 @@ import Section from 'components/Section'
 
 export default function Production({}) {
   return (
-    <Section title="Production">
+    <Section id="production" title="Production">
       <Container></Container>
     </Section>
   )

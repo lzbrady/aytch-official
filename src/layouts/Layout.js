@@ -10,7 +10,7 @@ import { colors } from 'BaseTheme'
 export default function Layout({
   alignTop = false,
   children,
-  ignoreMaxWidth = false,
+  ignoreContentBounds = false,
 }) {
   // const [scrollPosition, setScrollPosition] = useState(0)
 
@@ -33,7 +33,7 @@ export default function Layout({
       {/* <Header scrollPosition={scrollPosition} /> */}
 
       <Body>
-        <Content ignoreMaxWidth={ignoreMaxWidth} alignTop={alignTop}>
+        <Content ignoreContentBounds={ignoreContentBounds} alignTop={alignTop}>
           {children}
         </Content>
       </Body>
@@ -49,5 +49,6 @@ const Body = styled.div`
 
 const Content = styled.div`
   margin: ${props => (props.alignTop ? '0px' : '80px') + ' auto 0px'};
-  max-width: ${props => (props.ignoreMaxWidth ? 'none' : '1366px')};
+  max-width: ${props => (props.ignoreContentBounds ? 'none' : '1366px')};
+  padding-bottom: ${props => (props.ignoreContentBounds ? '0px' : '100px')};
 `

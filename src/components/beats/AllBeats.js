@@ -1,49 +1,85 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import { colors, shadows } from 'BaseTheme'
 
-import PlayIcon from '@icons/play.svg'
+import PlayButton from 'components/beats/PlayButton'
 
 export default function AllBeats({ containerStyle }) {
+  const [activeSong, setActiveSong] = useState()
+  const [isPlaying, setIsPlaying] = useState(false)
+
+  const play = song => {
+    console.log('Play', song)
+    setActiveSong(song)
+    // Toggle play/pause if same song, otherwise play
+    setIsPlaying(_isPlaying =>
+      song.title === activeSong?.title ? !_isPlaying : true
+    )
+  }
+
+  const songs = [
+    {
+      title: 'Wittit',
+      duration: '3:21',
+      bpm: 90,
+      imageSrc: 'https://m.media-amazon.com/images/I/61T1lIK0UaL._SS500_.jpg',
+    },
+    {
+      title: 'Dead Faces',
+      duration: '2:33',
+      bpm: 90,
+      imageSrc: 'https://m.media-amazon.com/images/I/61T1lIK0UaL._SS500_.jpg',
+    },
+  ]
+
   return (
     <Container style={containerStyle}>
-      <Beat>
-        <SongNumber>1</SongNumber>
+      {songs.map((song, index) => {
+        return (
+          <>
+            <Beat key={song.title}>
+              {activeSong?.title !== song.title && (
+                <SongNumber>{index + 1}</SongNumber>
+              )}
+              <StyledPlayButton
+                isActive={activeSong?.title === song.title}
+                isPlaying={isPlaying}
+                onClick={() => play(song)}
+              />
 
-        <StyledImage src="https://m.media-amazon.com/images/I/61T1lIK0UaL._SS500_.jpg" />
+              <StyledImage src={song.imageSrc} />
 
-        <SongInfo>
-          <Title>Wittit</Title>
-          <Text>3:21</Text>
-          <Text>90 bpm</Text>
-        </SongInfo>
+              <SongInfo>
+                <Title>{song.title}</Title>
+                <Text>{song.duration}</Text>
+                <Text>{song.bpm} bpm</Text>
+              </SongInfo>
 
-        <BuyButton>
-          <BuyButtonText>Buy Now</BuyButtonText>
-        </BuyButton>
-      </Beat>
+              <BuyButton>
+                <BuyButtonText>Buy Now</BuyButtonText>
+              </BuyButton>
+            </Beat>
 
-      <Divider />
-
-      <Beat>
-        <SongNumber>1</SongNumber>
-
-        <StyledImage src="https://m.media-amazon.com/images/I/61T1lIK0UaL._SS500_.jpg" />
-
-        <SongInfo>
-          <Title>Wittit</Title>
-          <Text>3:21</Text>
-          <Text>90 bpm</Text>
-        </SongInfo>
-
-        <BuyButton>
-          <BuyButtonText>Buy Now</BuyButtonText>
-        </BuyButton>
-      </Beat>
+            {index + 1 !== songs.length && <Divider />}
+          </>
+        )
+      })}
     </Container>
   )
 }
+
+const SongNumber = styled.p`
+  margin: 0px;
+  font-size: 28px;
+  width: 50px;
+  text-align: center;
+  color: ${colors.primaryDark};
+`
+
+const StyledPlayButton = styled(props => <PlayButton {...props} />)`
+  display: none;
+`
 
 const Beat = styled.div`
   display: flex;
@@ -54,6 +90,14 @@ const Beat = styled.div`
 
   :hover {
     background-color: ${colors.primaryLight};
+
+    ${SongNumber} {
+      display: none;
+    }
+
+    ${StyledPlayButton} {
+      display: flex;
+    }
   }
 `
 
@@ -88,7 +132,7 @@ const Divider = styled.hr`
   background-color: ${colors.primaryLight};
   width: calc(100% - 40px);
   border: none;
-  margin: 0px;
+  margin: 0px auto;
 `
 
 const SongInfo = styled.div`
@@ -99,19 +143,11 @@ const SongInfo = styled.div`
   padding: 0px 20px;
 `
 
-const SongNumber = styled.p`
-  margin: 0px;
-  font-size: 28px;
-  width: 50px;
-  margin-right: 20px;
-  text-align: center;
-  color: ${colors.primaryDark};
-`
-
 const StyledImage = styled.img`
   width: 100px;
   height: 100px;
   border-radius: 13px;
+  margin-left: 20px;
 `
 
 const Text = styled.h3`

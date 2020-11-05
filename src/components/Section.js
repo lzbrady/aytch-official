@@ -4,9 +4,9 @@ import BackgroundImage from 'gatsby-background-image'
 
 import { colors } from 'BaseTheme'
 
-export default function Section({ imageData, title, children }) {
+export default function Section({ id, imageData, title, children }) {
   return (
-    <StyledSection>
+    <StyledSection id={id}>
       {imageData ? (
         <StyledBackgroundImage
           Tag="section"

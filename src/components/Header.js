@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import { AnchorLink } from 'gatsby-plugin-anchor-links'
 import styled from 'styled-components'
 
 import { colors } from 'BaseTheme'
@@ -12,9 +13,9 @@ export default function Header({ scrollPosition }) {
       </Link>
 
       <Menu>
-        <MenuItem href="#music">Music</MenuItem>
-        <MenuItem href="#music">Videos</MenuItem>
-        <MenuItem href="#music">Production</MenuItem>
+        <MenuItemAnchor to="/#music">Music</MenuItemAnchor>
+        <MenuItemAnchor to="/#video">Videos</MenuItemAnchor>
+        <MenuItemAnchor to="/#production">Production</MenuItemAnchor>
         <MenuItemLink to="/beats">Beats</MenuItemLink>
         <MenuItemLink to="/contact">Contact</MenuItemLink>
       </Menu>
@@ -44,7 +45,7 @@ const Menu = styled.div`
   justify-content: flex-end;
 `
 
-const MenuItem = styled.a`
+const MenuItemAnchor = styled(props => <AnchorLink {...props} />)`
   width: 80px;
   margin: 4px 20px;
   text-align: center;
