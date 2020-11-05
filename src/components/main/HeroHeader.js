@@ -11,7 +11,7 @@ import { SMALL_SCREEN_SIZE } from 'constants'
 
 export default function HeroHeader({}) {
   const data = useStaticQuery(graphql`
-    query HeaderQuery {
+    query HeroHeaderQuery {
       fileName: file(relativePath: { eq: "childish_gambino.png" }) {
         childImageSharp {
           fluid(maxWidth: 800) {

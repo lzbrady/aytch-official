@@ -63,6 +63,8 @@ export default function Footer({}) {
 
 const AuthorLink = styled.a`
   color: ${colors.primary};
+  margin-top: 20px;
+  font-size: 12px;
 `
 
 const Container = styled.div`
