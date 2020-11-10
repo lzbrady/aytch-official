@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
-export default function Icon({ className, href, icon, onClick, size }) {
+export default function Icon({ className, href, icon, size }) {
   if (href) {
     return (
       <StyledIcon className={className} size={size}>
@@ -12,14 +12,6 @@ export default function Icon({ className, href, icon, onClick, size }) {
     )
   }
 
-  if (onClick) {
-    return (
-      <StyledIconButton className={className} onClick={onClick} size={size}>
-        {icon}
-      </StyledIconButton>
-    )
-  }
-
   return (
     <StyledIcon className={className} size={size}>
       {icon}
@@ -27,7 +19,7 @@ export default function Icon({ className, href, icon, onClick, size }) {
   )
 }
 
-const iconContainerStyle = css`
+const StyledIcon = styled.div`
   padding: 6px;
   display: flex;
   align-items: center;
@@ -40,14 +32,6 @@ const iconContainerStyle = css`
     background-color: rgba(255, 255, 255, 0.3);
     cursor: pointer;
   }
-`
-
-const StyledIcon = styled.div`
-  ${iconContainerStyle}
-`
-
-const StyledIconButton = styled.button`
-  ${iconContainerStyle}
 `
 
 const IconLink = styled.a`
