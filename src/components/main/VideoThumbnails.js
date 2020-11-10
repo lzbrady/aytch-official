@@ -2,6 +2,8 @@ import React, { useRef } from 'react'
 import { useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
 
+import { shadows } from 'BaseTheme'
+
 export default function VideoThumbnails({
   activeVideoTitle,
   onThumbnailSelected,
@@ -78,16 +80,14 @@ const Card = styled.div`
   height: 150px;
   background-color: black;
   border-radius: 8px;
-  box-shadow: 0px 4px 8px
-    ${props =>
-      props.active ? 'rgba(255, 255, 255, 0.4)' : 'rgba(0, 0, 0, 0.4)'};
   border: ${props => (props.active ? '3px solid white' : 'none')};
   box-sizing: border-box;
+  ${shadows.primary}
 
   :hover {
     opacity: 0.6;
     cursor: pointer;
-    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+    ${shadows.hover.primary}
   }
 `
 

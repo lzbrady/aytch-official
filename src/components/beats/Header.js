@@ -6,9 +6,9 @@ import BackgroundImage from 'gatsby-background-image'
 import HighlightButton from 'components/beats/HighlightButton'
 
 import { colors } from 'BaseTheme'
-import { SMALL_SCREEN_SIZE, MEDIUM_SCREEN_SIZE } from 'constants'
+import { MEDIUM_SCREEN_SIZE } from 'constants'
 
-export default function Header({}) {
+export default function Header({ beat, onHighlightClick }) {
   const data = useStaticQuery(graphql`
     query BeatsHeaderQuery {
       fileName: file(relativePath: { eq: "background-beats.jpg" }) {
@@ -34,19 +34,27 @@ export default function Header({}) {
         </TitleContainer>
       </StyledBackgroundImage>
 
-      <HighlightButton style={{ marginBottom: '-75px' }} />
+      <HighlightButton
+        beat={beat}
+        onHighlightClick={onHighlightClick}
+        style={{ marginBottom: '-75px' }}
+      />
     </Container>
   )
 }
 
 const Container = styled.div`
   height: 60vh;
-  min-height: 600px;
+  ${'' /* min-height: 600px; */}
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: ${MEDIUM_SCREEN_SIZE}) {
+    height: 50vh !important;
+  }
 `
 
 const StyledBackgroundImage = styled(props => <BackgroundImage {...props} />)`
@@ -63,7 +71,8 @@ const StyledBackgroundImage = styled(props => <BackgroundImage {...props} />)`
     background-attachment: fixed;
   }
 
-  @media screen and (max-width: ${SMALL_SCREEN_SIZE}) {
+  @media screen and (max-width: ${MEDIUM_SCREEN_SIZE}) {
+    height: 50vh !important;
     ::before,
     ::after {
       background-attachment: scroll;
@@ -73,7 +82,7 @@ const StyledBackgroundImage = styled(props => <BackgroundImage {...props} />)`
 
 const Subtitle = styled.h2`
   color: ${colors.primaryLight};
-  font-size: 144px;
+  font-size: 20vh;
   margin: 0;
 
   @media (max-width: ${MEDIUM_SCREEN_SIZE}) {
@@ -83,7 +92,7 @@ const Subtitle = styled.h2`
 
 const Title = styled.h1`
   color: ${colors.primaryLight};
-  font-size: 288px;
+  font-size: 25vh;
   margin: 0;
 
   @media (max-width: ${MEDIUM_SCREEN_SIZE}) {

@@ -16,12 +16,12 @@ export const colors = {
 
 export const shadows = {
   primary: `
-    box-shadow: 0px 4px 8px rgba(62, 62, 62, 0.60);
+    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.56);
   `,
 
   hover: {
     primary: `
-      box-shadow: 0px 8px 12px rgba(62, 62, 62, 0.65);
+      box-shadow: 0px 5px 13px 0px rgba(0,0,0,0.56);
     `,
   },
 }

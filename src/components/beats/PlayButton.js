@@ -6,22 +6,24 @@ import { colors } from 'BaseTheme'
 import PlayIcon from '@icons/play.svg'
 import PauseIcon from '@icons/pause.svg'
 
-export default function PlayButton({
-  className,
-  isActive,
-  isPlaying,
-  onClick,
-}) {
-  return (
-    <Container className={className} isActive={isActive} onClick={onClick}>
-      {isActive && isPlaying ? (
-        <PauseIcon width={24} height={24} fill={'white'} />
-      ) : (
-        <PlayIcon width={24} height={24} fill={'white'} />
-      )}
-    </Container>
-  )
-}
+const PlayButton = React.forwardRef(
+  ({ className, isActive, isPlaying, onClick }, ref) => {
+    return (
+      <Container
+        className={className}
+        isActive={isActive}
+        onClick={onClick}
+        ref={ref || null}
+      >
+        {isActive && isPlaying ? (
+          <PauseIcon width={24} height={24} fill={'white'} />
+        ) : (
+          <PlayIcon width={24} height={24} fill={'white'} />
+        )}
+      </Container>
+    )
+  }
+)
 
 const Container = styled.button`
   width: 50px;
@@ -42,3 +44,5 @@ const Container = styled.button`
     );
   }
 `
+
+export default PlayButton

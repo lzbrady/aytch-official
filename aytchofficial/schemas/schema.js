@@ -23,9 +23,29 @@ export default createSchema({
           type: 'string',
         },
         {
+          title: 'Duration',
+          name: 'duration',
+          type: 'string',
+        },
+        {
+          title: 'BPM',
+          name: 'bpm',
+          type: 'number',
+        },
+        {
           title: 'URL',
           name: 'url',
           type: 'url',
+        },
+        {
+          title: 'Image',
+          name: 'image',
+          type: 'image',
+        },
+        {
+          title: 'Audio File',
+          name: 'audio_file',
+          type: 'file',
         },
       ],
     },

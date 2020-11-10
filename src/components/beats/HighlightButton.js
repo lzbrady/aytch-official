@@ -5,11 +5,11 @@ import { colors, shadows } from 'BaseTheme'
 
 import PlayIcon from '@icons/play.svg'
 
-export default function HighlightButton({ style }) {
+export default function HighlightButton({ beat, onHighlightClick, style }) {
   return (
-    <StyledButton style={style}>
+    <StyledButton style={style} onClick={onHighlightClick}>
       <PlayIcon width={60} height={60} fill="white" />
-      <Title>Beat Title</Title>
+      <Title>{beat.title}</Title>
     </StyledButton>
   )
 }
@@ -19,7 +19,7 @@ const StyledButton = styled.button`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 40px;
+  padding: 20px 40px;
   width: 90%;
   max-width: 500px;
   height: 150px;
@@ -41,4 +41,7 @@ const Title = styled.h3`
   font-size: 48px;
   flex: 1;
   color: white;
+  margin: 0;
+  max-height: 100%;
+  overflow: hidden;
 `
