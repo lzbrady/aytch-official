@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useStaticQuery } from 'gatsby'
 import { AnchorLink } from 'gatsby-plugin-anchor-links'
 import Img from 'gatsby-image'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+import MenuIcon from 'components/header/MenuIcon'
 
 import { colors } from 'BaseTheme'
+
+const MOBILE_MENU_THRESHOLD = 870
 
 export default function Header({ scrollPosition }) {
   const data = useStaticQuery(graphql`
@@ -18,6 +22,7 @@ export default function Header({ scrollPosition }) {
       }
     }
   `)
+  const [isMenuExpanded, setIsMenuExpanded] = useState(false)
 
   return (
     <Container>
@@ -31,7 +36,14 @@ export default function Header({ scrollPosition }) {
         </TitleContainer>
       </Link>
 
-      <Menu>
+      <StyledMenuIcon
+        fill={colors.primaryLight}
+        isExpanded={isMenuExpanded}
+        onClick={() => setIsMenuExpanded(_isMenuExpanded => !_isMenuExpanded)}
+        size={48}
+      />
+
+      <Menu isExpanded={isMenuExpanded}>
         <MenuItemAnchor to="/#music">Music</MenuItemAnchor>
         <MenuItemAnchor to="/#video">Videos</MenuItemAnchor>
         <MenuItemAnchor to="/#production">Production</MenuItemAnchor>
@@ -54,6 +66,7 @@ const Container = styled.div`
   top: 0;
   z-index: 9999;
   background-color: ${colors.primaryDark};
+  justify-content: space-between;
   ${'' /* background-color: ${props =>
     colors.alpha.primaryDark.replace('x', props.scrollPosition / 500)}; */}
 
@@ -76,31 +89,57 @@ const LogoContainer = styled.div`
   align-items: center;
   border: 3px solid transparent;
   box-sizing: border-box;
+  z-index: 200;
 `
 
 const Menu = styled.div`
   display: flex;
   flex: 1;
   justify-content: flex-end;
+  align-items: stretch;
+  flex-direction: row;
+  transition: top 200ms ease;
+  z-index: 100;
+
+  @media screen and (max-width: ${MOBILE_MENU_THRESHOLD}px) {
+    flex-direction: column;
+    position: absolute;
+    top: ${props => (props.isExpanded ? '80px' : '-220px')};
+    left: 0;
+    right: 0;
+    background-color: ${colors.primaryDark};
+  }
+`
+
+const menuItemStyle = css`
+  flex: 1;
+  margin: 4px 20px;
+  text-align: center;
+  padding: 6px 0px;
+  box-sizing: border-box;
+  color: ${colors.primaryLight};
+  border-bottom: 1px solid transparent;
+
+  :hover {
+    color: ${colors.primary};
+    border-color: ${colors.primary};
+  }
 `
 
 const MenuItemAnchor = styled(props => <AnchorLink {...props} />)`
-  width: 80px;
-  margin: 4px 20px;
-  text-align: center;
-  border-radius: 5px;
-  padding: 6px 0px;
-  color: ${colors.primaryLight};
+  ${menuItemStyle}
 `
 
 const MenuItemLink = styled(props => <Link {...props} />)`
-  width: 80px;
-  margin: 4px 20px;
-  width: 80px;
-  text-align: center;
-  border-radius: 5px;
-  padding: 6px 0px;
-  color: ${colors.primaryLight};
+  ${menuItemStyle}
+`
+
+const StyledMenuIcon = styled(props => <MenuIcon {...props} />)`
+  display: none;
+
+  @media screen and (max-width: ${MOBILE_MENU_THRESHOLD}px) {
+    display: flex;
+  }
 `
 
 const Title = styled.h1`
@@ -108,6 +147,7 @@ const Title = styled.h1`
   text-decoration: none;
   margin: 0px 20px;
   font-weight: normal;
+  z-index: 200;
 `
 
 const TitleContainer = styled.div`
