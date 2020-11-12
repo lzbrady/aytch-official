@@ -12,15 +12,31 @@ import { SMALL_SCREEN_SIZE } from 'constants'
 export default function HeroHeader({}) {
   const data = useStaticQuery(graphql`
     query HeroHeaderQuery {
-      fileName: file(relativePath: { eq: "childish_gambino.png" }) {
+      fullImage: file(relativePath: { eq: "childish_gambino.png" }) {
         childImageSharp {
           fluid(maxWidth: 800) {
             ...GatsbyImageSharpFluid
           }
         }
       }
+
+      mobileImage: file(relativePath: { eq: "childish_gambino_cut.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 300) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
   `)
+
+  const imageSources = [
+    data.fullImage.childImageSharp.fluid,
+    {
+      ...data.mobileImage.childImageSharp.fluid,
+      media: `(max-width: ${SMALL_SCREEN_SIZE})`,
+    },
+  ]
 
   return (
     <Container>
@@ -31,17 +47,13 @@ export default function HeroHeader({}) {
           <HeaderText>Producer</HeaderText>
         </HeaderTextContainer>
 
-        <Button text="Looking for Beats?" />
+        <Button text="Looking for Beats?" linkTo="/beats" />
 
         <SocialMediaIcons color={colors.primaryLight} size={32} />
       </ContentContainer>
 
       <ImageContainer>
-        <Img
-          className="profile"
-          fluid={data.fileName.childImageSharp.fluid}
-          alt="Aytch"
-        />
+        <Img className="profile" fluid={imageSources} alt="Aytch" />
       </ImageContainer>
     </Container>
   )
@@ -86,10 +98,10 @@ const ImageContainer = styled.div`
   @media screen and (max-width: ${SMALL_SCREEN_SIZE}) {
     position: absolute;
     top: 160px;
-    right: -250px;
-    width: 500px;
+    right: 0;
+    width: 300px;
     height: auto;
     z-index: 1;
-    opacity: 0.5;
+    opacity: 0.4;
   }
 `

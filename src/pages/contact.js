@@ -39,7 +39,7 @@ export default function Contact() {
 
 const Background = styled.div`
   width: 100%;
-  height: 40vh;
+  height: 100vh;
   position: absolute !important;
   bottom: 0;
   left: 0;

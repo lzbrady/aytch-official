@@ -7,9 +7,9 @@ import YouTubeIcon from '@icons/youtube.svg'
 import InstagramIcon from '@icons/instagram.svg'
 import FacebookIcon from '@icons/facebook.svg'
 
-export default function SocialMediaIcons({ color = 'black', size = 24 }) {
+export default function SocialMediaIcons({ color = 'black', size = 24, style }) {
   return (
-    <IconContainer>
+    <IconContainer style={style}>
       <Icon
         href="https://www.youtube.com/channel/UCKgU9kCGe0Aq1qFUkPC2Y7w"
         icon={<YouTubeIcon width={size} height={size} fill={color} />}

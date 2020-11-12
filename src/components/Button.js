@@ -1,5 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
+import { Link } from 'gatsby'
+import styled, { css } from 'styled-components'
 
 import { colors } from 'BaseTheme'
 
@@ -11,7 +12,26 @@ export default function Button({
   onClick,
   style,
   text,
+  linkTo,
 }) {
+  if (linkTo) {
+    // Render Gatsby Link
+    return (
+      <StyledLink
+        to={linkTo}
+        style={style}
+        color={color}
+        hoverColor={hoverColor}
+        dark={dark}
+      >
+        <ButtonText color={color} dark={dark}>
+          {text}
+        </ButtonText>
+        {children}
+      </StyledLink>
+    )
+  }
+
   return (
     <StyledButton
       onClick={onClick}
@@ -28,7 +48,7 @@ export default function Button({
   )
 }
 
-const StyledButton = styled.button`
+const buttonStyle = css`
   border: 3px solid
     ${props =>
       props.color || props.dark ? colors.primaryDark : colors.primaryLight};
@@ -36,6 +56,7 @@ const StyledButton = styled.button`
   padding: 10px 40px;
   transition: all 100ms ease;
   display: block;
+  text-decoration: none;
 
   :hover {
     cursor: pointer;
@@ -49,6 +70,14 @@ const StyledButton = styled.button`
           : colors.primaryDark};
     }
   }
+`
+
+const StyledButton = styled.button`
+  ${buttonStyle}
+`
+
+const StyledLink = styled(props => <Link {...props} />)`
+  ${buttonStyle}
 `
 
 const ButtonText = styled.p`

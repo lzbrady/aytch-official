@@ -21,17 +21,28 @@ export default function MusicImageGrid({}) {
     <Grid>
       {data?.allMusicJson?.nodes?.map(music => {
         return (
-          <GridElement key={music.title}>
-            <a href={music.link}>
-              <StyledImage src={music.imageSrc} />
+          <Link href={music.link} target="_blank">
+            <GridElement key={music.title} backgroundImage={music.imageSrc}>
               <Title>{music.title}</Title>
-            </a>
-          </GridElement>
+            </GridElement>
+          </Link>
         )
       })}
     </Grid>
   )
 }
+
+const Title = styled.h3`
+  pointer-events: none;
+  margin: 0;
+  opacity: 0;
+  color: ${colors.primaryDark};
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 5px;
+  font-weight: normal;
+  transition: opacity 200ms ease;
+`
 
 const Grid = styled.div`
   display: grid;
@@ -40,36 +51,29 @@ const Grid = styled.div`
 `
 
 const GridElement = styled.div`
-  position: relative;
   filter: grayscale(1);
   width: 100%;
-  height: 100%;
+  height: 0px;
+  padding-top: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: ${props =>
+    props.backgroundImage ? 'url(' + props.backgroundImage + ')' : 'black'};
+  background-size: cover;
 
   :hover {
     filter: grayscale(0);
 
-    h3 {
-      display: inherit;
-      background-color: rgba(255, 255, 255, 0.8);
+    ${Title} {
+      opacity: 1;
+      background-color: rgba(255, 255, 255, 0.95);
     }
   }
 `
 
-const StyledImage = styled.img`
+const Link = styled.a`
   width: 100%;
-  height: 100%;
-`
-
-const Title = styled.h3`
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
   text-align: center;
-  pointer-events: none;
-  margin: 0;
-  padding: 20px 10px;
-  display: none;
-  color: ${colors.accentDark};
+  text-decoration: none;
 `
