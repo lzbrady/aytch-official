@@ -12,6 +12,14 @@ import { SMALL_SCREEN_SIZE } from 'constants'
 export default function Footer({}) {
   const data = useStaticQuery(graphql`
     query FooterQuery {
+      aytchBanner: file(relativePath: { eq: "aytch-banner.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+
       aytchLogo: file(relativePath: { eq: "aytch-logo.png" }) {
         childImageSharp {
           fixed(width: 150, height: 150) {
@@ -33,7 +41,7 @@ export default function Footer({}) {
   return (
     <Container>
       <ContentContainer>
-        <Title>Aytch</Title>
+        <Banner fluid={data.aytchBanner.childImageSharp.fluid} />
 
         <Pages>
           <MenuItemAnchor to="/#music">Music</MenuItemAnchor>
@@ -76,6 +84,11 @@ const AuthorLink = styled.a`
   :hover {
     text-decoration: underline;
   }
+`
+
+const Banner = styled(props => <Img {...props} />)`
+  width: 100%;
+  max-width: 800px;
 `
 
 const Container = styled.div`
@@ -146,6 +159,7 @@ const Pages = styled.div`
   flex: 1;
   align-self: stretch;
   margin-bottom: 10px;
+  margin-top: 20px;
 
   @media screen and (max-width: ${SMALL_SCREEN_SIZE}) {
     flex-direction: column;

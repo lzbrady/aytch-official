@@ -8,6 +8,7 @@ export default function Button({
   children,
   color,
   dark,
+  href,
   hoverColor,
   onClick,
   style,
@@ -29,6 +30,24 @@ export default function Button({
         </ButtonText>
         {children}
       </StyledLink>
+    )
+  }
+
+  if (href) {
+    return (
+      <StyledAnchor
+        href={href}
+        style={style}
+        color={color}
+        hoverColor={hoverColor}
+        dark={dark}
+        target="_blank"
+      >
+        <ButtonText color={color} dark={dark}>
+          {text}
+        </ButtonText>
+        {children}
+      </StyledAnchor>
     )
   }
 
@@ -70,6 +89,10 @@ const buttonStyle = css`
           : colors.primaryDark};
     }
   }
+`
+
+const StyledAnchor = styled.a`
+  ${buttonStyle}
 `
 
 const StyledButton = styled.button`
