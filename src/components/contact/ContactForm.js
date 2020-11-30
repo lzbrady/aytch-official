@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 import Button from 'components/Button'
 import Input from 'components/contact/Input'
-import RadioButtons from 'components/contact/RadioButtons'
 
 import { colors } from 'BaseTheme'
 
@@ -35,31 +34,6 @@ export default function ContactForm({}) {
 
           <InputGroup>
             <Input label="Message" multiline />
-          </InputGroup>
-
-          <InputGroup>
-            <RadioButtons
-              label="I'm interested in"
-              name="interest"
-              buttons={[
-                {
-                  value: 'purchasing_beats',
-                  label: 'Purchasing Beats',
-                },
-                {
-                  value: 'production',
-                  label: 'Production',
-                },
-                {
-                  value: 'collaborating',
-                  label: 'Collaborating',
-                },
-                {
-                  value: 'other',
-                  label: 'Other',
-                },
-              ]}
-            />
           </InputGroup>
         </FormContent>
         <Button dark text="Submit" style={{ margin: '80px auto 20px' }} />
