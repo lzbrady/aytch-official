@@ -60,10 +60,15 @@ export default function VideoThumbnails({
 
 const ArrowButton = styled.button`
   position: absolute;
-  top: 50px;
-  height: 50px;
-  width: 50px;
-  background-color: rgba(255, 255, 255, 0.6);
+  top: 0;
+  height: 150px;
+  width: 40px;
+  background: linear-gradient(
+    to ${props => props.align},
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.65),
+    rgba(255, 255, 255, 0.8)
+  );
   border: none;
   border-radius: 8px;
   font-size: 32px;
@@ -71,7 +76,8 @@ const ArrowButton = styled.button`
   ${props => props.align + ': 0'};
 
   :hover {
-    background-color: rgb(255, 255, 255) !important;
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    cursor: pointer;
   }
 `
 

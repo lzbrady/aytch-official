@@ -76,6 +76,7 @@ const buttonStyle = css`
   transition: all 100ms ease;
   display: block;
   text-decoration: none;
+  text-align: center;
 
   :hover {
     cursor: pointer;

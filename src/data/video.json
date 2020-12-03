@@ -1,50 +1,32 @@
 [
   {
-    "title": "Dead Faces 1",
-    "imageSrc": "https://m.media-amazon.com/images/I/61T1lIK0UaL._SS500_.jpg",
-    "link": "https://youtu.be/He5DGu6XwJk",
-    "isSquare": false
-  },
-  {
     "title": "Quarantine Freestyle Pt. II",
-    "imageSrc": "https://m.media-amazon.com/images/I/61T1lIK0UaL._SS500_.jpg",
-    "link": "https://www.facebook.com/watch/?v=4137333742958314",
-    "isSquare": true
+    "imageSrc": "https://i.ytimg.com/vi/PAgsTMOBVp4/hqdefault.jpg",
+    "link": "https://youtu.be/PAgsTMOBVp4",
+    "isSquare": false
   },
   {
-    "title": "Dead Faces 2",
-    "imageSrc": "https://m.media-amazon.com/images/I/61T1lIK0UaL._SS500_.jpg",
+    "title": "Quarantine Freestyle Pt. I",
+    "imageSrc": "https://i.ytimg.com/vi/SSYi0wDjBYE/hqdefault.jpg",
+    "link": "https://youtu.be/SSYi0wDjBYE",
+    "isSquare": false
+  },
+  {
+    "title": "Dead Faces (feat. Amy Li)",
+    "imageSrc": "https://i.ytimg.com/vi/He5DGu6XwJk/hqdefault.jpg",
     "link": "https://youtu.be/He5DGu6XwJk",
     "isSquare": false
   },
   {
-    "title": "Dead Faces 3",
-    "imageSrc": "https://m.media-amazon.com/images/I/61T1lIK0UaL._SS500_.jpg",
-    "link": "https://youtu.be/He5DGu6XwJk",
+    "title": "Dababy - Suge (Guitar Cover)",
+    "imageSrc": "https://i.ytimg.com/vi/6cwd8EuQGdM/hqdefault.jpg",
+    "link": "https://youtu.be/6cwd8EuQGdM",
     "isSquare": false
   },
   {
-    "title": "Dead Faces 4",
-    "imageSrc": "https://m.media-amazon.com/images/I/61T1lIK0UaL._SS500_.jpg",
-    "link": "https://youtu.be/He5DGu6XwJk",
-    "isSquare": false
-  },
-  {
-    "title": "Dead Faces 5",
-    "imageSrc": "https://m.media-amazon.com/images/I/61T1lIK0UaL._SS500_.jpg",
-    "link": "https://youtu.be/He5DGu6XwJk",
-    "isSquare": false
-  },
-  {
-    "title": "Dead Faces 6",
-    "imageSrc": "https://m.media-amazon.com/images/I/61T1lIK0UaL._SS500_.jpg",
-    "link": "https://youtu.be/He5DGu6XwJk",
-    "isSquare": false
-  },
-  {
-    "title": "Dead Faces 7",
-    "imageSrc": "https://m.media-amazon.com/images/I/61T1lIK0UaL._SS500_.jpg",
-    "link": "https://youtu.be/He5DGu6XwJk",
+    "title": "White Trash",
+    "imageSrc": "https://i.ytimg.com/vi/uxZgfyhUEYI/hqdefault.jpg",
+    "link": "https://youtu.be/uxZgfyhUEYI",
     "isSquare": false
   }
 ]

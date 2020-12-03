@@ -40,9 +40,9 @@ export default function Video({}) {
       imageData={data.fileName.childImageSharp.fluid}
     >
       <Container>
-        <VideoContainer center={!activeVideo?.isSquare}>
+        <VideoContainer isSquare={activeVideo?.isSquare}>
           <h1>{activeVideo?.title}</h1>
-          <PlayerContainer center={!activeVideo?.isSquare}>
+          <PlayerContainer isSquare={activeVideo?.isSquare}>
             <ReactPlayer
               url={activeVideo?.link}
               controls={true}
@@ -71,16 +71,17 @@ const Container = styled.div`
 
 const PlayerContainer = styled.div`
   width: 100%;
-  max-width: 960px;
+  max-width: ${props => (props.isSquare ? '600px' : '960px')};
   height: 605px;
   display: flex;
   justify-content: center;
-  align-items: ${props => (props.center ? 'center' : 'flex-start')};
+  align-items: ${props => (props.isSquare ? 'flex-start' : 'center')};
   margin: auto;
   background-color: black;
 
   @media (max-width: ${MEDIUM_SCREEN_SIZE}) {
     height: 320px !important;
+    max-width: ${props => (props.isSquare ? '320px' : '960px')};
   }
 `
 const VideoContainer = styled.div`

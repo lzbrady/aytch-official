@@ -30,6 +30,7 @@ export default function Music({}) {
           <MusicImageGrid />
           <Button
             text="View More"
+            href="https://open.spotify.com/artist/5USwQPDuFkuAfWMWFSQKY0?si=EhGCIHaqTgq6WlXNoxBmHw"
             style={{ margin: '40px auto 0px', width: '250px' }}
           />
         </MusicContainer>
